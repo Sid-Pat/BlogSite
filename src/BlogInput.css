@@ -1,0 +1,16 @@
+.centered {
+    height: 100vh; /* Magic here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c8e7ff  ;
+    width:100vw;
+    margin:0;
+  }
+
+.borderedBox{
+    border: black solid 3px;
+    padding: 5px;
+    background-color:aliceblue;
+    margin:5%;
+}

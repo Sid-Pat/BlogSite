@@ -1,0 +1,68 @@
+.main {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .main-heading {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    color: black;
+    text-transform: uppercase;
+  }
+  
+  .main-heading-primary {
+    display: block;
+    font-size: 4.0rem;
+    font-weight: 600;
+    letter-spacing: 35px;
+    animation: moveInLeft 1s ease-out;
+  }
+  
+  .main-heading-secondary {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 12px;
+    color: rgb(41, 42, 59);
+    animation: moveInRight 1s ease-out;
+  }
+  
+  @keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    
+    80% {
+      transform: translateX(10px);
+    }
+    
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+  
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    
+    80% {
+      transform: translateX(-10px);
+    }
+    
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+.btn{
+  padding-top: 5%;
+  padding-left:35%;
+}

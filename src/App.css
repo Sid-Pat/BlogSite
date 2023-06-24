@@ -1,0 +1,7 @@
+.bg-main{
+  /* background-image: linear-gradient(black,rgb(27, 21, 21),rgb(56, 36, 0),rgb(31, 31, 3)); */
+  background-color: #c8e7ff  ;
+  height:100vh;
+  width:100vw;
+  margin:0;
+}

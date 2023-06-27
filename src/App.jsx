@@ -59,7 +59,6 @@ function App() {
     <>
     <CssBaseline />
 
-    <h1>Hello</h1>
     <div className='bg-main'>
         <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>

@@ -12,9 +12,38 @@ import 'rc-footer/assets/index.css'; // import 'rc-footer/asssets/index.less';
 import BlogInput from './BlogInput';
 import Login from './pages/Login';
 import { useLocation } from 'react-router-dom';
+import ParticleBackground from 'react-particle-backgrounds'
+import Heading from './Heading';
+import SpecButton from './SpecButton';
 
 
 function App() {
+
+  const settings = {
+    canvas: {
+      canvasFillSpace: true,
+      width: 200,
+      height: 200,
+      useBouncyWalls: true
+    },
+    particle: {
+      particleCount: 100,
+      color: "#1769aa",
+      minSize: 5,
+      maxSize: 12
+    },
+    velocity: {
+      directionAngle: 0,
+      directionAngleVariance: 30,
+      minSpeed: 0.2,
+      maxSpeed: 4
+    },
+    opacity: {
+      minOpacity: 0,
+      maxOpacity: 0.5,
+      opacityTransitionTime: 5000
+    }
+  }
   
   const [isAuth,setIsAuth] = useState(false);
   // const location = useLocation();
@@ -28,9 +57,10 @@ function App() {
   
   return (
     <>
-    <div className='bg-main'>
     <CssBaseline />
-    
+
+    <h1>Hello</h1>
+    <div className='bg-main'>
         <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
             <Route path="/" element={<Landing />}/>
@@ -54,6 +84,9 @@ function App() {
     backgroundColor= '#0f0f0f'
     bottom="Made with ❤️ by Siddhant Patil"
   />
+
+<ParticleBackground settings={settings} className="bg-main"/>
+
     </div>
     </>
   )

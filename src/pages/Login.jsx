@@ -11,8 +11,8 @@ function Login({setIsAuth}) {
             localStorage.setItem("isAuth",true);
             setIsAuth(true);
             navigate("/");
-        })
-    }
+        });
+    };
 
   return (
     <div className='loginPage'>

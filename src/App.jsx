@@ -15,37 +15,39 @@ import { useLocation } from 'react-router-dom';
 import ParticleBackground from 'react-particle-backgrounds'
 import Heading from './Heading';
 import SpecButton from './SpecButton';
+import ReadBlog from './ReadBlog';
+
 
 
 function App() {
 
-  const settings = {
-    canvas: {
-      canvasFillSpace: true,
-      width: 200,
-      height: 200,
-      useBouncyWalls: true
-    },
-    particle: {
-      particleCount: 100,
-      color: "#1769aa",
-      minSize: 5,
-      maxSize: 12
-    },
-    velocity: {
-      directionAngle: 0,
-      directionAngleVariance: 30,
-      minSpeed: 0.2,
-      maxSpeed: 4
-    },
-    opacity: {
-      minOpacity: 0,
-      maxOpacity: 0.5,
-      opacityTransitionTime: 5000
-    }
-  }
+  // const settings = {
+  //   canvas: {
+  //     canvasFillSpace: true,
+  //     width: 200,
+  //     height: 200,
+  //     useBouncyWalls: true
+  //   },
+  //   particle: {
+  //     particleCount: 100,
+  //     color: "#1769aa",
+  //     minSize: 5,
+  //     maxSize: 12
+  //   },
+  //   velocity: {
+  //     directionAngle: 0,
+  //     directionAngleVariance: 30,
+  //     minSpeed: 0.2,
+  //     maxSpeed: 4
+  //   },
+  //   opacity: {
+  //     minOpacity: 0,
+  //     maxOpacity: 0.5,
+  //     opacityTransitionTime: 5000
+  //   }
+  // }
   
-  const [isAuth,setIsAuth] = useState(false);
+  const [isAuth,setIsAuth] = useState(localStorage.getItem("isAuth"));
   // const location = useLocation();
   // console.log(location.state);
   // setIsAuth(location.state);
@@ -63,12 +65,13 @@ function App() {
         <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
             <Route path="/" element={<Landing />}/>
-            <Route path="/input_Blog" element={<BlogInput />} />
+            <Route path="/input_Blog" element={<BlogInput isAuth={isAuth}/>} />
+            <Route path="/read_Blogs" element={<ReadBlog isAuth={isAuth}/>}/>
             <Route path="/my_Blog" element={<MainBlog />} />
             <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
             <Route path="*" element={<Error /> }/>
         </Routes>
-        <Footer
+        {/* <Footer
     columns={[
       {
         icon: (
@@ -83,8 +86,7 @@ function App() {
     backgroundColor= '#0f0f0f'
     bottom="Made with ❤️ by Siddhant Patil"
   />
-
-<ParticleBackground settings={settings} className="bg-main"/>
+<ParticleBackground settings={settings} className="bg-main"/> */}
 
     </div>
     </>

@@ -14,6 +14,10 @@ import {auth} from './firebase-config';
 export default function ButtonAppBar({isAuth,setIsAuth}) {
   let navigate = useNavigate();
   
+  const handleRedirect = () => {
+    navigate("/");
+  }
+
   const signUserOut = () => {
     signOut(auth).then(()=>{
       localStorage.clear();
@@ -22,7 +26,6 @@ export default function ButtonAppBar({isAuth,setIsAuth}) {
     })
   }
 
-  console.log(isAuth);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -36,18 +39,21 @@ export default function ButtonAppBar({isAuth,setIsAuth}) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={handleRedirect}>
+            Blog Drop
           </Typography>
           
-          <Link to="/input_Blog"><Button style={{color:"white"}}> Create Blog </Button> </Link> 
           
           { !isAuth ?
           <Link to="/login"><Button style={{color:"white"}}>Login</Button> </Link>
             :
+            <>
+            <Link to="/input_Blog"><Button style={{color:"white"}}> Create Blog </Button> </Link> 
+
             <Button variant="contained" endIcon={<LogoutIcon />} onClick={signUserOut}>
               Log Out
             </Button>
+            </>
           }
         </Toolbar>
       </AppBar>

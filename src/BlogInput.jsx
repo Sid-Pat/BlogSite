@@ -6,29 +6,50 @@ import './BlogInput.css';
 import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
 import {useNavigate} from 'react-router-dom';
+import {addDoc, collection} from 'firebase/firestore'
+import {auth, db} from './firebase-config'
 
-let tr = {"title":"","author":"anonymous","text":""}
 
-export default function BasicInput() {
+let tr = {"author":{"id":"","name":""},"title":"","text":""}
+
+export default function BasicInput({isAuth}) {
 
     const [blog,setBlog] = useState(tr);
 
 
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // console.log({blog})
-        navigate('../my_blog',{state:{...blog}});
-    }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     // console.log({blog})
+    //     navigate('../my_blog',{state:{...blog}});
+    // }
 
     const handleChange = (e) => {
         const {name,value} = e.target;
-        
+      
         setBlog({...blog,
                 [name]:value});
     }
 
+    const postsCollectionRef  = collection(db,"posts");
+    const createPost = async (event) => {
+        event.preventDefault();
+        // console.log(auth.currentUser.uid);
+        // console.log({blog})
+        await addDoc(postsCollectionRef, 
+          {...blog,author:{id:auth.currentUser.uid,name:auth.currentUser.displayName}}
+        );
+        navigate('/');
+      
+
+    }
+
+    useEffect(() => {
+      if(!isAuth){
+        navigate("/login");
+      }
+    })
     // useEffect(() => {
     //     localStorage.setItem('dataKey', JSON.stringify(data));
     //   }, [blog]);
@@ -41,7 +62,7 @@ export default function BasicInput() {
     <div className='borderedBox'>
     
     <Box
-        onSubmit={handleSubmit}
+        onSubmit={createPost}
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
@@ -52,13 +73,6 @@ export default function BasicInput() {
     >
       <TextField id="outlined-basic" label="Blog Title" variant="outlined" value={blog.title} onChange={(e)=>handleChange(e)} name="title" style = {{width: 500}}/>
       <br />
-      <TextField id="outlined-basic" label="Author Name" variant="outlined" value={blog.author} onChange={(e)=>handleChange(e)} name="author" style = {{width: 500}}/>
-    
-      
-    
-    
-
-    <br />
     
     <TextField
           onChange={(e)=>handleChange(e)}

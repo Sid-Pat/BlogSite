@@ -15,10 +15,10 @@ function Heading() {
         </h1>
         <div className='btn'>
         <Button onClick={()=>{
-          navigate("/input_Blog");
+          navigate("/read_Blogs");
         }} 
         variant="contained" startIcon={<CreateTwoToneIcon/>} size="large">
-            Create Blog
+            Read Blog
         </Button>
         </div>
         </div>

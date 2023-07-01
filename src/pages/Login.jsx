@@ -1,18 +1,37 @@
 import React from 'react'
+import { useEffect } from 'react';
 import {auth,provider} from "../firebase-config";
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup,signInWithRedirect,getRedirectResult } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
 function Login({setIsAuth}) {
     let navigate = useNavigate();
 
-    const signInWithGoogle = () => {
-        signInWithPopup(auth,provider).then((result)=>{
-            localStorage.setItem("isAuth",true);
-            setIsAuth(true);
-            navigate("/");
-        });
-    };
+    // const signInWithGoogle = () => {
+    //     signInWithPopup(auth,provider).then((result)=>{
+    //         localStorage.setItem("isAuth",true);
+    //         setIsAuth(true);
+    //         navigate("/");
+    //     });
+    // };
+    
+    useEffect( () =>{
+        async function f(){
+            const response = await getRedirectResult(auth);
+            if(response){
+                // console.log(response);
+                localStorage.setItem("isAuth",true);
+                setIsAuth(true);
+                navigate("/");
+            }
+        }
+        f();
+    },[]);
+    
+
+    const signInWithGoogle = async () => {
+        await signInWithRedirect(auth,provider)
+    }    
 
   return (
     <div className='loginPage'>

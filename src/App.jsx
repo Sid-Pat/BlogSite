@@ -70,8 +70,8 @@ function App() {
             <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
             <Route path="*" element={<Error /> }/>
         </Routes>
-        
-        {/* <Footer
+
+        <Footer
     columns={[
       {
         icon: (
@@ -86,7 +86,7 @@ function App() {
     backgroundColor= '#0f0f0f'
     bottom="Made with ❤️ by Siddhant Patil"
   />
-<ParticleBackground settings={settings} className="bg-main"/> */}
+{/* <ParticleBackground settings={settings} className="bg-main"/> */}
 
     </div>
     </>

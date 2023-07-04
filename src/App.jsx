@@ -60,7 +60,6 @@ function App() {
   return (
     <>
     <CssBaseline />
-<h1>Heloo</h1>
     <div className='bg-main'>
         <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
@@ -71,6 +70,7 @@ function App() {
             <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
             <Route path="*" element={<Error /> }/>
         </Routes>
+        
         {/* <Footer
     columns={[
       {

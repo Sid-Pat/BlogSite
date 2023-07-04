@@ -38,6 +38,8 @@ function Landing() {
   return (
     <div className='bg-main'>
         <CssBaseline/>
+        <h1>Heloo</h1>
+
         <Heading />
         {/* <ParticleBackground settings={settings} className="bg-main"/> */}
     </div>

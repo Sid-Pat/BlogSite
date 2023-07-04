@@ -10,7 +10,7 @@ import { CssBaseline } from '@mui/material';
 import Footer from 'rc-footer';
 import 'rc-footer/assets/index.css'; // import 'rc-footer/asssets/index.less';
 import BlogInput from './BlogInput';
-import Login from './pages/Login';
+import Login from './Login';
 import { useLocation } from 'react-router-dom';
 import ParticleBackground from 'react-particle-backgrounds'
 import Heading from './Heading';

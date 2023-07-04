@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react';
-import {auth,provider} from "../firebase-config";
+import {auth,provider} from "./firebase-config";
 import { signInWithPopup,signInWithRedirect,getRedirectResult } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
